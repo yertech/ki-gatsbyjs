@@ -1,0 +1,19 @@
+.ProductGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 667px) {
+  .ProductGrid {
+    flex-direction: column; /* change the direction of the container */
+    width: auto; /* overrides the height of 80px set for large screens */
+  }
+}
+
+@media only screen and (min-width: 668px) and (orientation: portrait) {
+  .ProductGrid {
+    width: auto;
+    flex-wrap: wrap;
+  }
+}

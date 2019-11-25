@@ -1,0 +1,51 @@
+.Selection {
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  margin-top: 30px;
+}
+
+ul.slider-tab li {
+  border: 1px solid #dddddd;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  line-height: 35px;
+  margin-right: 16px;
+  padding: 0 20px;
+  text-transform: uppercase;
+}
+
+ul.slider-tab li a {
+  color: #927777;
+}
+
+ul.slider-tab li.active a,
+ul.slider-tab li:hover a {
+  color: #202020;
+}
+
+ul.slider-tab.flex-item {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+  .slider-tab.flex-item,
+  .Selection {
+    flex-direction: column; /* change the direction of the container */
+    width: 100vw; /* overrides the height of 80px set for large screens */
+  }
+  .slider-tab.flex-item li {
+    margin: 5px;
+  }
+
+  .Selection .flex-item-centre.tab_title {
+    margin-bottom: 15px;
+    padding: 0px 30px 0px 30px;
+  }
+
+  .Selection .flex-item-center {
+    padding-left: 0px;
+  }
+}

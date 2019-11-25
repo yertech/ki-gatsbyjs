@@ -1,0 +1,32 @@
+.Hero {
+  width: 1200px;
+  margin-bottom: 40px;
+}
+
+.heroTxt span {
+  border: 1px solid #dddddd;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  line-height: 35px;
+  margin-right: 16px;
+  padding: 0 20px;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 1024px) {
+  .Hero {
+    flex-direction: column; /* change the direction of the container */
+    width: auto; /* overrides the height of 80px set for large screens */
+  }
+
+  .heroTxt {
+    padding: 0px 30px 0px 30px;
+  }
+
+  .Hero .flex-item-centre.tab_title {
+    margin-bottom: 15px;
+    padding: 0px 30px 0px 30px;
+  }
+}

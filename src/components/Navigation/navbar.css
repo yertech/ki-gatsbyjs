@@ -1,0 +1,172 @@
+.TopHeader {
+  display: flex;
+  height: var(--height-TopHeader); /* set a fixed height */
+  background-color: var(--bg-color-lg-screens);
+  font-size: 10px;
+  justify-content: space-between;
+  width: 1200px;
+}
+
+.Navbar {
+  display: flex;
+  height: var(--height-lg-screens); /* set a fixed height */
+  background-color: var(--bg-color-lg-screens);
+  justify-content: space-between;
+}
+
+.navbar-links {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+.navbar-links li ul {
+  visibility: hidden;
+  top: 62px;
+  background-color: #cfae98;
+  color: white;
+  position: absolute;
+  padding: 15px 0;
+  width: 220px;
+  z-index: 999;
+  opacity: 0;
+}
+
+.navbar-links li:hover ul {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 350ms ease-in-out;
+  -moz-transition: opacity 350ms ease-in-out;
+  -webkit-transition: opacity 350ms ease-in-out;
+}
+
+li.navbar-sublink {
+  padding: 5px 15px;
+}
+
+.navbar-home,
+.navbar-link {
+  display: flex;
+  align-items: center; /* we want children to be centered vertically*/
+  padding: 20px; /* with paddings on the sides */
+}
+
+.navbar-link a,
+.flex-item-right a {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.navbar-home {
+  height: var(--height-lg-screens);
+  padding-right: 50px;
+}
+
+.navbar-link a:hover {
+  color: #d8b7a2;
+}
+
+.toggle {
+  display: none;
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.toggleSubMenu {
+  display: block;
+  font-size: 17px;
+}
+
+.logo {
+  width: 97px;
+  height: 100px;
+}
+.Navbar .flex-item-center {
+  width: 100%;
+}
+/**
+    *
+    * Smaller screen + Mobile
+    *
+    */
+@media screen and (max-width: 1024px) {
+  .Navbar {
+    flex-direction: column; /* change the direction of the container */
+    height: auto; /* overrides the height for large screens */
+    background-color: white;
+  }
+
+  .TopHeader {
+    display: none;
+  }
+
+  .navbar-link {
+    align-items: center;
+    padding: 5px;
+    justify-content: left;
+  }
+  .navbar-links {
+    flex-direction: column;
+  }
+
+  .navbar-links.closed {
+    /* when toggled, hide the main nav*/
+    display: none;
+  }
+
+  .toggle {
+    display: block;
+  }
+  .toggleSubMenu {
+    padding: 0px;
+  }
+
+  .navbar-link {
+    border-bottom: none;
+  }
+
+  .navbar-links.closed,
+  .navbar-links.closed li {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-in-out;
+  }
+
+  .navbar-links.opened,
+  .navbar-links.opened li {
+    display: block;
+    max-height: 600px;
+    transition: max-height 0.6s ease-in-out;
+  }
+
+  .navbar-links li ul {
+    visibility: visible;
+    top: 0;
+    background-color: transparent;
+    color: inherit;
+    position: absolute;
+    padding: 15px 0;
+    width: auto;
+    z-index: auto;
+    opacity: 1;
+  }
+
+  .navbar-sublinks.closed,
+  .navbar-sublinks.closed li {
+    position: absolute;
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  .navbar-sublinks.opened,
+  .navbar-sublinks.opened li {
+    position: relative;
+    display: block;
+    max-height: 600px;
+    transition: max-height 0.6s ease-in-out;
+  }
+}
