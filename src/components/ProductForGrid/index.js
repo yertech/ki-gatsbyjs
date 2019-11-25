@@ -32,7 +32,7 @@ const ProductForGrid = ({ product }) => {
         title={title}
       >
         <div className="item-product-image-box">
-          <div className="product-img-additional back">
+          <div className="product-img">
             <Img
               fluid={firstImage.localFile.childImageSharp.fluid}
               alt={handle}

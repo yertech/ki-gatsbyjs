@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import StoreContext from '~/context/StoreContext'
 import GridProducts from '../Grid'
@@ -8,6 +8,7 @@ const Selection = () => {
   const {
     store: { checkout },
   } = useContext(StoreContext)
+
   const { allShopifyCollection } = useStaticQuery(
     graphql`
       query {
@@ -19,6 +20,7 @@ const Selection = () => {
         ) {
           edges {
             node {
+              id
               handle
               title
               products {
@@ -51,6 +53,11 @@ const Selection = () => {
       }
     `
   )
+  // const [activeTabId, setActiveTabId] = useState(null)
+
+  // function clickTab(id) {
+  //   setActiveTabId(id)
+  // }
 
   const getPrice = price =>
     Intl.NumberFormat(undefined, {
@@ -68,21 +75,25 @@ const Selection = () => {
       <div className="flex-item-center">
         <ul className="slider-tab flex-item">
           {allShopifyCollection.edges ? (
-            allShopifyCollection.edges.map(({ node: { handle, title } }) => (
-              <li key={handle} className="active first">
-                <a href=".">
-                  <span>{title}</span>
-                </a>
-              </li>
-            ))
+            allShopifyCollection.edges.map(
+              ({ node: { id, handle, title } }) => (
+                <li key={handle} className="active first">
+                  <a href=".">
+                    <span>{title}</span>
+                  </a>
+                </li>
+              )
+            )
           ) : (
             <p>No Selections found</p>
           )}
         </ul>
       </div>
-      {allShopifyCollection.edges.map(({ node: { handle, products } }) =>
+      {allShopifyCollection.edges.map(({ node: { id, handle, products } }) =>
         products ? (
-          <GridProducts products={products} selection={handle} />
+          <div className={'flex-item-center '} key={id}>
+            <GridProducts products={products} selection={handle} />
+          </div>
         ) : (
           <p>No Products found</p>
         )

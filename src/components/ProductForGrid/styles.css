@@ -2,7 +2,7 @@
   flex: 0 25%;
   margin-bottom: 2%;
 }
-.product img {
+.product-img {
   width: 271px;
 }
 
@@ -57,7 +57,7 @@ h3.product-name {
     margin: 12px;
   }
 
-  .product img {
+  .product-img {
     width: 360px;
   }
 }
