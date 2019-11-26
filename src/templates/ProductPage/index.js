@@ -10,10 +10,7 @@ import {
   GridLeft,
   GridRight,
 } from '~/utils/styles'
-import {
-  ProductTitle,
-  ProductDescription
-} from './styles'
+import { ProductTitle, ProductDescription } from './styles'
 
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
@@ -86,7 +83,7 @@ export const query = graphql`
         localFile {
           childImageSharp {
             fluid(maxWidth: 910) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

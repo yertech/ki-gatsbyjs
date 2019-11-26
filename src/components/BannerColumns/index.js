@@ -11,7 +11,7 @@ const BannerColumns = () => {
           node {
             id
             fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

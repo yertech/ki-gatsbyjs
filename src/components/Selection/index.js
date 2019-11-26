@@ -29,7 +29,7 @@ const Selection = () => {
                   localFile {
                     childImageSharp {
                       fluid(maxWidth: 360) {
-                        ...GatsbyImageSharpFluid
+                        ...GatsbyImageSharpFluid_withWebp
                       }
                     }
                   }
