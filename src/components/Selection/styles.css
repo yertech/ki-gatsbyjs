@@ -17,17 +17,28 @@ ul.slider-tab li {
   text-transform: uppercase;
 }
 
-ul.slider-tab li a {
+ul.slider-tab li button {
   color: #927777;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
-ul.slider-tab li.active a,
-ul.slider-tab li:hover a {
+ul.slider-tab li.active button,
+ul.slider-tab li:hover button {
   color: #202020;
 }
 
 ul.slider-tab.flex-item {
   margin-bottom: 30px;
+}
+
+.tab-content {
+  display: none;
+  padding: 0;
+}
+
+.tab-content.active {
+  display: block;
 }
 
 @media screen and (max-width: 1024px) {

@@ -1,41 +1,33 @@
 import React from 'react'
+import Img from 'gatsby-image'
+import { useStaticQuery, graphql } from 'gatsby'
 import './styles.css'
 
 const BannerColumns = () => {
+  const { allImageSharp } = useStaticQuery(graphql`
+    query BannerImageQuery {
+      allImageSharp(filter: { original: { src: { regex: "/banner/" } } }) {
+        edges {
+          node {
+            id
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+  `)
   return (
     <div className="BannerColumn home-banners">
-      <div className="banner-item">
-        <div className="overlay">
-          <div className="banner-hover"></div>
-
-          <img
-            className="lazy"
-            src="//cdn.shopify.com/s/files/1/0030/1796/5603/files/IMG_4848.jpg"
-            alt=""
-          />
+      {allImageSharp.edges.map(({ node: { id, fluid } }) => (
+        <div className="banner-item" key={id}>
+          <div className="overlay">
+            <div className="banner-hover"></div>
+            <Img fluid={fluid} alt="ki decoration banner" />
+          </div>
         </div>
-      </div>
-      <div className="banner-item">
-        <div className="overlay">
-          <div className="banner-hover"></div>
-          <img
-            className="lazy"
-            src="//cdn.shopify.com/s/files/1/0030/1796/5603/files/IMG_4913.jpg"
-            alt=""
-          />
-        </div>
-      </div>
-      <div className="banner-item">
-        <div className="overlay">
-          <div className="banner-hover"></div>
-
-          <img
-            className="lazy"
-            src="//cdn.shopify.com/s/files/1/0030/1796/5603/files/IMG_4854.jpg"
-            alt=""
-          />
-        </div>
-      </div>
+      ))}
     </div>
   )
 }

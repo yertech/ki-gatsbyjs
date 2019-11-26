@@ -6,8 +6,9 @@
 
 @media screen and (max-width: 667px) {
   .ProductGrid {
-    flex-direction: column; /* change the direction of the container */
-    width: auto; /* overrides the height of 80px set for large screens */
+    flex-direction: column;
+    width: auto;
+    align-items: center;
   }
 }
 

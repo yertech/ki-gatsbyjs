@@ -10,8 +10,6 @@ const ProductForGrid = ({ product }) => {
   } = useContext(StoreContext)
 
   const {
-    id,
-    handle,
     title,
     images: [firstImage],
     variants: [firstVariant],
@@ -25,7 +23,7 @@ const ProductForGrid = ({ product }) => {
     }).format(parseFloat(price ? price : 0))
 
   return (
-    <div className="product" key={product.id}>
+    <>
       <Link
         className="product-image"
         to={`/product/${product.handle}/`}
@@ -35,7 +33,7 @@ const ProductForGrid = ({ product }) => {
           <div className="product-img">
             <Img
               fluid={firstImage.localFile.childImageSharp.fluid}
-              alt={handle}
+              alt={title}
             />
           </div>
         </div>
@@ -54,7 +52,7 @@ const ProductForGrid = ({ product }) => {
           </span>
         </p>
       </div>
-    </div>
+    </>
   )
 }
 

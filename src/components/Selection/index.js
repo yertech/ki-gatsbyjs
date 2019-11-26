@@ -1,14 +1,9 @@
-import React, { useState, useContext } from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
-import StoreContext from '~/context/StoreContext'
+import React, { useState } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 import GridProducts from '../Grid'
 import './styles.css'
 
 const Selection = () => {
-  const {
-    store: { checkout },
-  } = useContext(StoreContext)
-
   const { allShopifyCollection } = useStaticQuery(
     graphql`
       query {
@@ -33,8 +28,8 @@ const Selection = () => {
                   originalSrc
                   localFile {
                     childImageSharp {
-                      fluid(maxWidth: 910) {
-                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                      fluid(maxWidth: 360) {
+                        ...GatsbyImageSharpFluid
                       }
                     }
                   }
@@ -53,18 +48,14 @@ const Selection = () => {
       }
     `
   )
-  // const [activeTabId, setActiveTabId] = useState(null)
+  const [activeTabId, setActiveTabId] = useState(null)
 
-  // function clickTab(id) {
-  //   setActiveTabId(id)
-  // }
-
-  const getPrice = price =>
-    Intl.NumberFormat(undefined, {
-      currency: checkout.currencyCode ? checkout.currencyCode : 'EUR',
-      minimumFractionDigits: 2,
-      style: 'currency',
-    }).format(parseFloat(price ? price : 0))
+  const getTabClass = (index, currentTabId) => {
+    if (index === 0 && activeTabId === null) setActiveTabId(currentTabId)
+    return (index === 0 && activeTabId === null) || currentTabId === activeTabId
+      ? 'active first'
+      : ''
+  }
 
   return (
     <div className="Selection">
@@ -76,11 +67,11 @@ const Selection = () => {
         <ul className="slider-tab flex-item">
           {allShopifyCollection.edges ? (
             allShopifyCollection.edges.map(
-              ({ node: { id, handle, title } }) => (
-                <li key={handle} className="active first">
-                  <a href=".">
-                    <span>{title}</span>
-                  </a>
+              ({ node: { id, handle, title } }, index) => (
+                <li key={handle} className={getTabClass(index, handle)}>
+                  <button onClick={() => setActiveTabId(handle)} type="button">
+                    {title}
+                  </button>
                 </li>
               )
             )
@@ -91,8 +82,15 @@ const Selection = () => {
       </div>
       {allShopifyCollection.edges.map(({ node: { id, handle, products } }) =>
         products ? (
-          <div className={'flex-item-center '} key={id}>
-            <GridProducts products={products} selection={handle} />
+          <div
+            className={
+              handle === activeTabId ? 'tab-content active' : 'tab-content'
+            }
+            key={id}
+          >
+            <div className="flex-item-center" key={id}>
+              <GridProducts products={products} selection={handle} />
+            </div>
           </div>
         ) : (
           <p>No Products found</p>

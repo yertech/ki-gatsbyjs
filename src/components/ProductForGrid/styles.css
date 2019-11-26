@@ -10,6 +10,7 @@ h3.product-name {
   margin-bottom: 0;
   font-size: 17px;
   font-weight: normal;
+  width: 271px;
 }
 
 .c--anim-btn span {
@@ -17,6 +18,7 @@ h3.product-name {
   text-decoration: none;
   text-align: left;
   display: block;
+  width: 271px;
 }
 
 .c--anim-btn,
@@ -43,6 +45,26 @@ h3.product-name {
 
 .product:hover .c-anim-btn {
   margin-top: -2em;
+}
+@media (max-width: 576px) {
+  .product-img {
+    width: auto;
+    padding: 10px;
+  }
+
+  .product-name {
+    margin: 0;
+    padding: 15px 15px 0 15px;
+  }
+
+  .price-box {
+    padding-left: 15px;
+    padding-bottom: 15px;
+  }
+
+  h3.product-name {
+    width: 85vw;
+  }
 }
 
 @media only screen and (min-width: 668px) and (orientation: portrait) {

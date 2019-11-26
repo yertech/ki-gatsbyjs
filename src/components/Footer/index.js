@@ -8,7 +8,6 @@ const Footer = () => {
       <div className="footer_top">
         <div className="logo-ft">
           <img
-            className="lazy"
             src="//cdn.shopify.com/s/files/1/0030/1796/5603/files/logo-black-100_214x.png"
             alt="Ki decoration - décoration de Bali"
           />
@@ -137,7 +136,6 @@ const Footer = () => {
           rel="noopener noreferrer"
         >
           <img
-            className="lazy"
             src="https://www.paypalobjects.com/webstatic/mktg/logo-center/logo_paypal_moyens_paiement_fr.jpg"
             alt="PayPal Acceptance Mark"
           />

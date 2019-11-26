@@ -27,7 +27,7 @@ const Navbar = () => {
           VENTE D'OBJETS DE DÉCORATION MADE IN BALI ● SHIPPING WORLDWIDE
         </div>
         <div className="flex-item-right navbar-link">
-          <a href=".">
+          <a href="/">
             MENU
             <button className="toggleSubMenu" onClick={toggleSubMenu}>
               {isShopMenuOpen ? <MdExpandLess /> : <MdExpandMore />}
@@ -38,7 +38,7 @@ const Navbar = () => {
       <nav className="Navbar center">
         <div className="flex-item-center">
           <div className="navbar-home">
-            <Link to={'.'}>
+            <Link to={'/'}>
               <img className="logo" src={logo} alt="KI logo" />
             </Link>
             <button className="toggle" onClick={toggle}>
@@ -47,10 +47,10 @@ const Navbar = () => {
           </div>
           <ul className={'navbar-links ' + (isMobile ? 'opened' : 'closed')}>
             <li className="navbar-link">
-              <Link to={'.'}>HOME</Link>
+              <Link to={'/'}>HOME</Link>
             </li>
             <li className="navbar-link">
-              <Link className="toggleSubMenu" onClick={toggleSubMenu}>
+              <Link to={''} className="toggleSubMenu" onClick={toggleSubMenu}>
                 SHOP
                 {isShopMenuOpen ? <MdExpandLess /> : <MdExpandMore />}
               </Link>
@@ -66,20 +66,20 @@ const Navbar = () => {
               </ul>
             </li>
             <li className="navbar-link">
-              <Link to={'.'}>PERSONAL SHOPPING</Link>
+              <Link to={'/'}>PERSONAL SHOPPING</Link>
             </li>
             <li className="navbar-link">
-              <Link to={'.'}>STORY</Link>
+              <Link to={'/'}>STORY</Link>
             </li>
             <li className="navbar-link">
-              <Link to={'.'}>INSTAGRAM</Link>
+              <Link to={'/'}>INSTAGRAM</Link>
             </li>
           </ul>
         </div>
         <div className="flex-item-right">
           <ul className={'navbar-links ' + (isMobile ? 'opened' : 'closed')}>
             <li className="navbar-link">
-              <Link to={'.'}>
+              <Link to={'/'}>
                 <MdSearch />
               </Link>
             </li>
