@@ -1,57 +1,98 @@
-import React, { useContext, useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react'
+import {
+  MdExpandMore,
+  MdExpandLess,
+  MdSearch,
+  MdShoppingCart,
+} from 'react-icons/md'
+import logo from '../../images/logo.png'
+import './styles.css'
+import { Link } from 'gatsby'
 
-import StoreContext from '~/context/StoreContext'
-import { 
-	Wrapper,
-	Container,
-	CartCounter,
-	MenuLink
-} from './styles'
+const Navigation = () => {
+  const [isMobile, setIsMobile] = useState(false)
+  const [isShopMenuOpen, setIsShopMenuOpen] = useState(false)
 
-const countQuantity = lineItems => {
-	let quantity = 0
+  function toggle() {
+    setIsMobile(!isMobile)
+  }
 
-	lineItems.forEach(item => {
-		quantity = quantity + item.quantity
-	});
-
-	return quantity
-}
-
-const Navigation = ({ siteTitle }) => {
-	const { store: {checkout} } = useContext(StoreContext)
-	const [quantity, setQuantity] = useState(countQuantity(checkout ? checkout.lineItems : []))
-
-	useEffect(() => {
-		setQuantity(countQuantity(checkout ? checkout.lineItems : []));
-	}, [checkout]);
-
-	return(
-		<Wrapper>
-			<Container>
-				<MenuLink to='/'>
-					{siteTitle}
-				</MenuLink>
-				<MenuLink to='/cart'>
-					{quantity !== 0 &&
-						<CartCounter>
-							{quantity}
-						</CartCounter>
-					}
-					Cart 🛍
-				</MenuLink>
-			</Container>
-		</Wrapper>
-	)
-}
-
-Navigation.propTypes = {
-	siteTitle: PropTypes.string,
-}
-
-Navigation.defaultProps = {
-	siteTitle: ``,
+  function toggleSubMenu() {
+    setIsShopMenuOpen(!isShopMenuOpen)
+  }
+  return (
+    <>
+      <div className="TopHeader">
+        <div className="flex-item-center">
+          VENTE D'OBJETS DE DÉCORATION MADE IN BALI ● SHIPPING WORLDWIDE
+        </div>
+        <div className="flex-item-right navbar-link">
+          <a href="/">
+            MENU
+            <button className="toggleSubMenu" onClick={toggleSubMenu}>
+              {isShopMenuOpen ? <MdExpandLess /> : <MdExpandMore />}
+            </button>
+          </a>
+        </div>
+      </div>
+      <nav className="Navbar center">
+        <div className="flex-item-center">
+          <div className="navbar-home">
+            <Link to={'/'}>
+              <img className="logo" src={logo} alt="KI logo" />
+            </Link>
+            <button className="toggle" onClick={toggle}>
+              {isMobile ? <MdExpandLess /> : <MdExpandMore />}
+            </button>
+          </div>
+          <ul className={'navbar-links ' + (isMobile ? 'opened' : 'closed')}>
+            <li className="navbar-link">
+              <Link to={'/'}>HOME</Link>
+            </li>
+            <li className="navbar-link">
+              <Link to={''} className="toggleSubMenu" onClick={toggleSubMenu}>
+                SHOP
+                {isShopMenuOpen ? <MdExpandLess /> : <MdExpandMore />}
+              </Link>
+              <ul
+                className={
+                  'navbar-sublinks ' + (isShopMenuOpen ? 'opened' : 'closed')
+                }
+              >
+                <li className="navbar-sublink">Test</li>
+                <li className="navbar-sublink">Test</li>
+                <li className="navbar-sublink">Test</li>
+                <li className="navbar-sublink">Test</li>
+              </ul>
+            </li>
+            <li className="navbar-link">
+              <Link to={'/'}>PERSONAL SHOPPING</Link>
+            </li>
+            <li className="navbar-link">
+              <Link to={'/'}>STORY</Link>
+            </li>
+            <li className="navbar-link">
+              <Link to={'/'}>INSTAGRAM</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="flex-item-right">
+          <ul className={'navbar-links ' + (isMobile ? 'opened' : 'closed')}>
+            <li className="navbar-link">
+              <Link to={'/'}>
+                <MdSearch />
+              </Link>
+            </li>
+            <li className="navbar-link">
+              <Link to={'/cart'}>
+                <MdShoppingCart />
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </>
+  )
 }
 
 export default Navigation

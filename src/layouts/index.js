@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import ContextProvider from '~/provider/ContextProvider'
 import { GlobalStyle, Container } from '~/utils/styles'
-import NavBar from '../components/Navigation/Navbar'
+import Navigation from '../components/Navigation'
 
 // const Wrapper = styled.div`
 //   margin: 0 auto;
@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
         render={data => (
           <>
             <Container>
-              <NavBar />
+              <Navigation />
               {children}
             </Container>
           </>
