@@ -32,7 +32,7 @@ const ProductForGrid = ({ product }) => {
         <div className="item-product-image-box">
           <div className="product-img">
             <Img
-              fluid={firstImage.localFile.childImageSharp.fluid}
+              fixed={firstImage.localFile.childImageSharp.fixed}
               alt={title}
             />
           </div>
@@ -46,7 +46,12 @@ const ProductForGrid = ({ product }) => {
           </span>
           <span>
             {' '}
-            <a href="/" title="Add to cart" className="addToCart">
+            <a
+              href="/"
+              title="Add to cart"
+              className="addToCart"
+              aria-label="link to add to cart"
+            >
               AJOUT AU PANIER
             </a>
           </span>

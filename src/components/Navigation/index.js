@@ -29,7 +29,11 @@ const Navigation = () => {
         <div className="flex-item-right navbar-link">
           <a href="/">
             MENU
-            <button className="toggleSubMenu" onClick={toggleSubMenu}>
+            <button
+              id="btnSubMenu"
+              className="toggleSubMenu"
+              onClick={toggleSubMenu}
+            >
               {isShopMenuOpen ? <MdExpandLess /> : <MdExpandMore />}
             </button>
           </a>
@@ -41,7 +45,7 @@ const Navigation = () => {
             <Link to={'/'}>
               <img className="logo" src={logo} alt="KI logo" />
             </Link>
-            <button className="toggle" onClick={toggle}>
+            <button id="btnMenu" className="toggle" onClick={toggle}>
               {isMobile ? <MdExpandLess /> : <MdExpandMore />}
             </button>
           </div>
