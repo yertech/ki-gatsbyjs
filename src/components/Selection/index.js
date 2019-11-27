@@ -33,7 +33,7 @@ const Selection = () => {
                         srcSetBreakpoints: [400]
                         quality: 80
                       ) {
-                        ...GatsbyImageSharpFluid_withWebp_noBase64
+                        ...GatsbyImageSharpFluid_withWebp
                       }
                     }
                   }
