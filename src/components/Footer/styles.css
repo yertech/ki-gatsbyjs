@@ -19,13 +19,13 @@
 
 .footer_middle {
   margin-top: 15px;
-  width: 100vw;
+  width: 80vw;
   justify-content: space-around;
 }
 .footer_bottom {
   border-top: 1px solid #444444;
   margin-top: 30px;
-  width: 1045px;
+  width: 80vw;
   justify-content: space-evenly;
   align-items: center;
 }
