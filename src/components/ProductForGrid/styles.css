@@ -54,16 +54,11 @@ h3.product-name {
 
   .product-name {
     margin: 0;
-    padding: 15px 15px 0 15px;
+    padding-top: 15px;
   }
 
   .price-box {
-    padding-left: 15px;
-    padding-bottom: 15px;
-  }
-
-  h3.product-name {
-    width: 85vw;
+    padding-bottom: 20px;
   }
 }
 

@@ -21,6 +21,7 @@ const Footer = () => {
               href="https://www.facebook.com/kidecoration-853390995037580/"
               rel="noopener noreferrer"
               target="_blank"
+              aria-label="link to facebook"
             >
               <FaFacebookF />
             </a>
@@ -30,6 +31,7 @@ const Footer = () => {
               href="https://www.instagram.com/kidecoration/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="link to Instagram"
             >
               <FaInstagram />
             </a>
@@ -134,6 +136,7 @@ const Footer = () => {
           title="PayPal Comment Ca Marche"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="link to Paypal"
         >
           <img
             src="https://www.paypalobjects.com/webstatic/mktg/logo-center/logo_paypal_moyens_paiement_fr.jpg"

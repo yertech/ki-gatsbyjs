@@ -15,6 +15,17 @@ const ProductForGrid = ({ product }) => {
     variants: [firstVariant],
   } = product
 
+  const sources = [
+    {
+      ...firstImage.mobileImage.childImageSharp.fixed,
+      media: `(max-width: 668px)`,
+    },
+    {
+      ...firstImage.desktopImage.childImageSharp.fixed,
+      media: `(min-width: 668px)`,
+    },
+  ]
+
   const getPrice = price =>
     Intl.NumberFormat(undefined, {
       currency: checkout.currencyCode ? checkout.currencyCode : 'EUR',
@@ -29,16 +40,10 @@ const ProductForGrid = ({ product }) => {
         to={`/product/${product.handle}/`}
         title={title}
       >
-        <div className="item-product-image-box">
-          <div className="product-img">
-            <Img
-              fixed={firstImage.localFile.childImageSharp.fixed}
-              alt={title}
-            />
-          </div>
-        </div>
+        <Img fixed={sources} alt={title} />
         <h3 className="product-name">{title}</h3>
       </Link>
+
       <div className="price-box">
         <p className="special-price c--anim-btn">
           <span className="price c-anim-btn">

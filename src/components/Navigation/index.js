@@ -27,12 +27,13 @@ const Navigation = () => {
           VENTE D'OBJETS DE DÉCORATION MADE IN BALI ● SHIPPING WORLDWIDE
         </div>
         <div className="flex-item-right navbar-link">
-          <a href="/">
+          <a href="/" aria-label="link to expand menu">
             MENU
             <button
               id="btnSubMenu"
               className="toggleSubMenu"
               onClick={toggleSubMenu}
+              aria-label="SubMenu Button"
             >
               {isShopMenuOpen ? <MdExpandLess /> : <MdExpandMore />}
             </button>
@@ -45,13 +46,20 @@ const Navigation = () => {
             <Link to={'/'}>
               <img className="logo" src={logo} alt="KI logo" />
             </Link>
-            <button id="btnMenu" className="toggle" onClick={toggle}>
+            <button
+              id="btnMenu"
+              className="toggle"
+              onClick={toggle}
+              aria-label="Menu Button"
+            >
               {isMobile ? <MdExpandLess /> : <MdExpandMore />}
             </button>
           </div>
           <ul className={'navbar-links ' + (isMobile ? 'opened' : 'closed')}>
             <li className="navbar-link">
-              <Link to={'/'}>HOME</Link>
+              <Link to={'/'} aria-label="Home page link">
+                HOME
+              </Link>
             </li>
             <li className="navbar-link">
               <Link to={''} className="toggleSubMenu" onClick={toggleSubMenu}>
@@ -88,7 +96,7 @@ const Navigation = () => {
               </Link>
             </li>
             <li className="navbar-link">
-              <Link to={'/cart'}>
+              <Link to={'/cart'} aria-label="Cart page link">
                 <MdShoppingCart />
               </Link>
             </li>

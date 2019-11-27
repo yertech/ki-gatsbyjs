@@ -1,7 +1,6 @@
 .BannerColumn {
   display: flex;
   flex-direction: row;
-  width: 90%;
 }
 
 .banner-item {

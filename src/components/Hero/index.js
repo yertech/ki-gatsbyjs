@@ -19,6 +19,7 @@ const Hero = () => {
         <a
           className="btn btn-info black btn-lg"
           href="/collections/selection-de-noel"
+          aria-label="link to Selection"
         >
           <span>DÉCOUVRIR</span>
         </a>
