@@ -26,17 +26,10 @@ const Selection = () => {
                 images {
                   id
                   originalSrc
-                  mobileImage: localFile {
+                  localFile {
                     childImageSharp {
-                      fixed(width: 271) {
-                        ...GatsbyImageSharpFixed_withWebp
-                      }
-                    }
-                  }
-                  desktopImage: localFile {
-                    childImageSharp {
-                      fixed(width: 360) {
-                        ...GatsbyImageSharpFixed_withWebp
+                      fluid(maxWidth: 300) {
+                        ...GatsbyImageSharpFluid_withWebp_noBase64
                       }
                     }
                   }

@@ -14,6 +14,9 @@ const GridProducts = ({ products, selection }) => {
       ) : (
         <p>No products</p>
       )}
+      <div className="filling-empty-space-childs"></div>
+      <div className="filling-empty-space-childs"></div>
+      <div className="filling-empty-space-childs"></div>
     </div>
   )
 }

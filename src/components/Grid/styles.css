@@ -4,11 +4,21 @@
   justify-content: space-around;
 }
 
+.filling-empty-space-childs {
+  width: 300px;
+  height: 0; /*Important! for the divs to collapse should they fall in a new row*/
+}
+
 @media screen and (max-width: 667px) {
   .ProductGrid {
     flex-direction: column;
     width: auto;
     align-items: center;
+  }
+
+  .filling-empty-space-childs {
+    width: 271px;
+    height: 0; /*Important! for the divs to collapse should they fall in a new row*/
   }
 }
 
@@ -16,5 +26,10 @@
   .ProductGrid {
     width: auto;
     flex-wrap: wrap;
+  }
+
+  .filling-empty-space-childs {
+    width: 360px;
+    height: 0; /*Important! for the divs to collapse should they fall in a new row*/
   }
 }

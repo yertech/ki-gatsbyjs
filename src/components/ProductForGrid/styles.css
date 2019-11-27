@@ -1,16 +1,13 @@
 .product {
-  flex: 0 25%;
   margin-bottom: 2%;
-}
-.product-img {
-  width: 271px;
+  width: 300px;
 }
 
 h3.product-name {
   margin-bottom: 0;
   font-size: 17px;
   font-weight: normal;
-  width: 271px;
+  width: 300px;
 }
 
 .c--anim-btn span {
@@ -18,7 +15,7 @@ h3.product-name {
   text-decoration: none;
   text-align: left;
   display: block;
-  width: 271px;
+  width: 300px;
 }
 
 .c--anim-btn,
@@ -62,6 +59,12 @@ h3.product-name {
   }
 }
 
+@media only screen and (max-width: 667px) {
+  .product {
+    margin: 12px;
+    width: 271px;
+  }
+}
 @media only screen and (min-width: 668px) and (orientation: portrait) {
   .slider-tab.flex-item,
   .Selection {
@@ -70,11 +73,7 @@ h3.product-name {
   }
 
   .product {
-    flex: 0 1 25%;
     margin: 12px;
-  }
-
-  .product-img {
     width: 360px;
   }
 }

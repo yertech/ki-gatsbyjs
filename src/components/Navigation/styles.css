@@ -4,7 +4,7 @@
   background-color: var(--bg-color-lg-screens);
   font-size: 10px;
   justify-content: space-between;
-  width: 1200px;
+  width: 80vw;
 }
 
 .Navbar {
@@ -92,7 +92,7 @@ li.navbar-sublink {
     * Smaller screen + Mobile
     *
     */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .Navbar {
     flex-direction: column; /* change the direction of the container */
     height: auto; /* overrides the height for large screens */

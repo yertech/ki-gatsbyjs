@@ -1,5 +1,5 @@
 .Hero {
-  width: 1200px;
+  width: 80vw;
   margin-bottom: 40px;
 }
 
@@ -15,7 +15,7 @@
   text-transform: uppercase;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .Hero {
     flex-direction: column; /* change the direction of the container */
     width: auto; /* overrides the height of 80px set for large screens */

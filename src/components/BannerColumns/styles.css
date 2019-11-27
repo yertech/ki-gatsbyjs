@@ -1,11 +1,13 @@
 .BannerColumn {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
 .banner-item {
   flex-grow: 1;
   margin: 10px;
+  width: 600px;
 }
 
 .banner-item img {
@@ -43,6 +45,7 @@
 
   .banner-item {
     margin: 0 0 10px 0;
+    width: 271px;
   }
 
   .banner-item + .banner-item {
