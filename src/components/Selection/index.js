@@ -28,11 +28,9 @@ const Selection = () => {
                   originalSrc
                   localFile {
                     childImageSharp {
-                      resize(width: 360){
                       fluid(maxWidth: 360, srcSetBreakpoints: [271, 300, 360]) {
                         ...GatsbyImageSharpFluid_withWebp
                       }
-                    }
                     }
                   }
                 }
