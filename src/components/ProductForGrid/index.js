@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
+import GImage from '../GImage'
 import './styles.css'
 import StoreContext from '~/context/StoreContext'
 
@@ -29,7 +30,8 @@ const ProductForGrid = ({ product }) => {
         to={`/product/${product.handle}/`}
         title={title}
       >
-        <Img fluid={firstImage.localFile.childImageSharp.fluid} alt={title} />
+        {/* <Img fluid={firstImage.localFile.childImageSharp.fluid} alt={title} /> */}
+        <GImage src={firstImage.localFile.childImageSharp.resize.src} base64={firstImage.localFile.childImageSharp.fluid.base64} sizes={"(max-width: 360px) 100vw, 360px"}/>
         <h3 className="product-name">{title}</h3>
       </Link>
 
