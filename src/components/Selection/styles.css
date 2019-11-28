@@ -59,3 +59,9 @@ ul.slider-tab.flex-item {
     padding-left: 0px;
   }
 }
+
+@media only screen  and (min-width: 1200px) {
+  .Selection {   
+    width: 70vw;
+  }
+}
