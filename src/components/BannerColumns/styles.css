@@ -1,13 +1,12 @@
 .BannerColumn {
   display: flex;
   flex-direction: row;
-  width: 100%;
 }
 
 .banner-item {
   flex-grow: 1;
   margin: 10px;
-  width: 600px;
+  width: 500px;
 }
 
 .banner-item img {
@@ -37,7 +36,6 @@
 .home-banners .overlay:hover .banner-hover {
   opacity: 1;
 }
-
 @media screen and (max-width: 414px) {
   .BannerColumn {
     flex-direction: column;
@@ -51,5 +49,11 @@
 
   .banner-item + .banner-item {
     margin-left: 0px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1600px) {
+  .BannerColumn {
+    width: 100%;
   }
 }

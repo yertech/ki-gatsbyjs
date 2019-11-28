@@ -10,7 +10,7 @@ const BannerColumns = () => {
         edges {
           node {
             id
-            fluid(maxWidth: 450, srcSetBreakpoints: [271, 450]) {
+            fluid(maxWidth: 500, srcSetBreakpoints: [271, 500]) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
