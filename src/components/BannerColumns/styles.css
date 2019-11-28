@@ -41,6 +41,7 @@
 @media screen and (max-width: 414px) {
   .BannerColumn {
     flex-direction: column;
+    width: auto;
   }
 
   .banner-item {

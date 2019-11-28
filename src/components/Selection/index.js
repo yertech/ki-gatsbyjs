@@ -28,11 +28,7 @@ const Selection = () => {
                   originalSrc
                   localFile {
                     childImageSharp {
-                      fluid(
-                        maxWidth: 300
-                        srcSetBreakpoints: [400]
-                        quality: 80
-                      ) {
+                      fluid(maxWidth: 360, srcSetBreakpoints: [271, 300, 360]) {
                         ...GatsbyImageSharpFluid_withWebp
                       }
                     }
