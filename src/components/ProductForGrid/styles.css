@@ -71,9 +71,4 @@ h3.product-name {
     width: auto;
     flex-wrap: wrap;
   }
-
-  .product {
-    margin: 12px;
-    width: 360px;
-  }
 }

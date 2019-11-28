@@ -31,7 +31,7 @@ const ProductForGrid = ({ product }) => {
         title={title}
       >
         {/* <Img fluid={firstImage.localFile.childImageSharp.fluid} alt={title} /> */}
-        <GImage src={firstImage.localFile.childImageSharp.resize.src} base64={firstImage.localFile.childImageSharp.fluid.base64} sizes={"(max-width: 360px) 100vw, 360px"}/>
+        <GImage src={firstImage.localFile.childImageSharp.resize.src} base64={firstImage.localFile.childImageSharp.fluid.base64} sizes={"(max-width: 300px) 100vw, 300px"}/>
         <h3 className="product-name">{title}</h3>
       </Link>
 

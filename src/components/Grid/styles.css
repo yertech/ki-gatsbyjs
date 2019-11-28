@@ -29,7 +29,7 @@
   }
 
   .filling-empty-space-childs {
-    width: 360px;
+    width: 300px;
     height: 0; /*Important! for the divs to collapse should they fall in a new row*/
   }
 }
