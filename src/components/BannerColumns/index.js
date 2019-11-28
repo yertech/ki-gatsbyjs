@@ -1,5 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
+import GImage from '../GImage'
 import { useStaticQuery, graphql } from 'gatsby'
 import './styles.css'
 
@@ -10,8 +11,11 @@ const BannerColumns = () => {
         edges {
           node {
             id
-            fluid(maxWidth: 500, srcSetBreakpoints: [271, 500]) {
-              ...GatsbyImageSharpFluid_withWebp
+            resize(width: 500, height:667, jpegProgressive: true) {
+              src
+            }
+            fluid(maxWidth: 500) {
+              base64
             }
           }
         }
@@ -21,11 +25,11 @@ const BannerColumns = () => {
 
   return (
     <div className="BannerColumn home-banners">
-      {allImageSharp.edges.map(({ node: { id, fluid } }) => (
+      {allImageSharp.edges.map(({ node: { id, resize, fluid } }) => (
         <div className="banner-item" key={id}>
           <div className="overlay">
             <div className="banner-hover"></div>
-            <Img fluid={fluid} alt="ki decoration banner" />
+            <GImage src={resize.src} base64={fluid.base64} sizes={"(max-width: 667px) 271px, 500px"}/>
           </div>
         </div>
       ))}
