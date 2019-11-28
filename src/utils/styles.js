@@ -109,7 +109,7 @@ export const GlobalStyle = props => (
       * Smaller screen + Mobile
       *
       */
-      @media screen and (max-width: 1023px) {
+      @media only screen  and (max-width: 1023px) {
         .flex-item-center {
           flex-direction: column;
         }

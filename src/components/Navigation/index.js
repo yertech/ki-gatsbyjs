@@ -91,7 +91,7 @@ const Navigation = () => {
         <div className="flex-item-right">
           <ul className={'navbar-links ' + (isMobile ? 'opened' : 'closed')}>
             <li className="navbar-link">
-              <Link to={'/'}>
+              <Link to={'/'} aria-label="mobile menu link">
                 <MdSearch />
               </Link>
             </li>

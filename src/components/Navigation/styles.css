@@ -92,7 +92,7 @@ li.navbar-sublink {
     * Smaller screen + Mobile
     *
     */
-@media screen and (max-width: 1023px) {
+@media only screen  and (max-width: 1023px) {
   .Navbar {
     flex-direction: column; /* change the direction of the container */
     height: auto; /* overrides the height for large screens */

@@ -29,7 +29,7 @@ const ProductForGrid = ({ product }) => {
         to={`/product/${product.handle}/`}
         title={title}
       >
-        <Img fluid={firstImage.localFile.childImageSharp.fluid} alt={title} />
+        <Img fluid={{...firstImage.localFile.childImageSharp.fluid, sizes: '(max-width: 667px) 271px, (min-width: 668px) and (orientation: portrait) 360px, 300px' }} alt={title} />
         <h3 className="product-name">{title}</h3>
       </Link>
 
