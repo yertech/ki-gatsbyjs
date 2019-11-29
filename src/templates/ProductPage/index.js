@@ -10,33 +10,61 @@ import {
   GridLeft,
   GridRight,
 } from '~/utils/styles'
-import { ProductTitle, ProductDescription } from './styles'
+import {
+  ProductContainer,
+  ProductTitle,
+  ProductDescription,
+  ProductGridLeft,
+  ProductGridRight,
+  ImgTwoColumnGrid,
+} from './styles'
 
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
+
+  const {
+    title,
+    description,
+    descriptionHtml,
+    images,
+    images: [firstImage],
+    variants: [firstVariant],
+  } = data.shopifyProduct
+
   return (
     <>
-      <SEO title={product.title} description={product.description} />
-      <Container>
+      <SEO title={title} description={description} />
+      <ProductContainer>
         <TwoColumnGrid>
           <GridLeft>
-            {product.images.map(image => (
-              <Img
-                fluid={image.localFile.childImageSharp.fluid}
-                key={image.id}
-                alt={product.title}
-              />
-            ))}
+            <ImgTwoColumnGrid>
+              <ProductGridLeft>
+                {images.map(image => (
+                  <Img
+                    fluid={image.localFile.childImageSharp.fluid}
+                    key={image.id}
+                    alt={title}
+                  />
+                ))}
+              </ProductGridLeft>
+              <ProductGridRight>
+                <Img
+                  fluid={firstImage.localFile.childImageSharp.fluid}
+                  key={firstImage.id}
+                  alt={title}
+                />
+              </ProductGridRight>
+            </ImgTwoColumnGrid>
           </GridLeft>
           <GridRight>
-            <ProductTitle>{product.title}</ProductTitle>
-            <ProductDescription
-              dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-            />
+            <ProductTitle>{title}</ProductTitle>
             <ProductForm product={product} />
           </GridRight>
         </TwoColumnGrid>
-      </Container>
+        <ProductDescription
+          dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+        />
+      </ProductContainer>
     </>
   )
 }
