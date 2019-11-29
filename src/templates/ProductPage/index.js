@@ -17,6 +17,9 @@ import {
   ProductGridLeft,
   ProductGridRight,
   ImgTwoColumnGrid,
+  ProductCollateral,
+  ProductNavTabs,
+  ProductTabContent,
 } from './styles'
 
 const ProductPage = ({ data }) => {
@@ -61,9 +64,36 @@ const ProductPage = ({ data }) => {
             <ProductForm product={product} />
           </GridRight>
         </TwoColumnGrid>
-        <ProductDescription
-          dangerouslySetInnerHTML={{ __html: descriptionHtml }}
-        />
+        <ProductCollateral>
+          <ProductNavTabs>
+            <li class="active">
+              <a data-toggle="tab" href="#sectionA">
+                Description du produit
+              </a>
+            </li>
+            <li>
+              <a data-toggle="tab" href="#sectionC">
+                Livraisons &amp; Retours
+              </a>
+            </li>
+          </ProductNavTabs>
+          <ProductTabContent>
+            <div id="sectionA" class="tab-pane fade in active">
+              <ProductDescription
+                dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+              />
+            </div>
+            <div id="sectionC" class="tab-pane fade">
+              <div class="box-collateral">
+                Les produits sont expédiés dans un délai de 48 à 72h selon
+                disponibilité. Les envois se font par la Poste Indonésienne qui
+                assure les livraisons entre 10 et 15 jours. Les retours sont
+                acceptés dans un délai de 7 jours, en faire préalablement la
+                demande par mail.
+              </div>
+            </div>
+          </ProductTabContent>
+        </ProductCollateral>
       </ProductContainer>
     </>
   )

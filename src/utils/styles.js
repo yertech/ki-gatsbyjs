@@ -14,11 +14,11 @@ export const GlobalStyle = props => (
   <Global
     {...props}
     styles={css`
-      // body {
-      //   margin: 0;
-      // }
+      body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 14px;
+      }
       html {
-        font-family: sans-serif;
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: 100%;
       }
@@ -109,7 +109,7 @@ export const GlobalStyle = props => (
       * Smaller screen + Mobile
       *
       */
-      @media only screen  and (max-width: 1023px) {
+      @media only screen and (max-width: 1023px) {
         .flex-item-center {
           flex-direction: column;
         }
@@ -124,7 +124,7 @@ export const GlobalStyle = props => (
       ul {
         margin: 0;
         padding: 0;
-        font-size: 17px;
+        font-size: 14px;
       }
 
       li {
