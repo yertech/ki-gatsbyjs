@@ -55,10 +55,13 @@ export const ProductCollateral = styled.div`
     margin-top: 30px;
     margin-bottom: 40px;
     width: 80vw;   
+
+    @media (max-width:${breakpoints.m}px) {
+      width: 90vw; 
+    }
 }
 `
 export const ProductNavTabs = styled.div`
-  border-bottom: 1px solid #ddd;
   margin-bottom: 0;
   padding-left: 0;
   list-style: none;
@@ -71,40 +74,43 @@ export const ProductNavTabs = styled.div`
 
   & #tabDescription:checked ~ .tabs #tabDescription-label,
   #tabDeliver:checked ~ .tabs #tabDeliver-label {
-    background-color: #fff;
     cursor: default;
-    border-left-color: #69be28;
+    color: #9e6947 !important;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    margin-bottom: -1px;
+    position: relative;
+    background: white;
   }
 
   & #tabDescription:checked ~ .tabs #tabDescription-panel,
   #tabDeliver:checked ~ .tabs #tabDeliver-panel {
     display: block;
+    border: 1px solid #ddd;
   }
 `
 export const FlexTabs = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   flex-wrap: wrap;
 
   & .tab {
-    flex-grow: 1;
-    max-height: 40px;
     display: inline-block;
-    padding: 10px;
+    padding: 15px;
     vertical-align: top;
-    background-color: #eee;
-    cursor: hand;
     cursor: pointer;
-    border-left: 10px solid #ccc;
-
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 30px;
     &:hover {
-      background-color: #fff;
+      color: #9e6947;
     }
   }
 
   & .panel {
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     min-height: 300px;
     display: none;
     width: 100%;
@@ -124,15 +130,13 @@ export const FlexTabs = styled.div`
 
     & .panel {
       width: auto;
+      margin-bottom: 5px;
     }
 
     & .tab {
       background: #fff;
-      border-bottom: 1px solid #ccc;
-
-      &:last-of-type {
-        border-bottom: none;
-      }
+      border: 1px solid #ccc;
+      margin-bottom: 5px;
     }
 
     & #tabDescription-label {
@@ -150,12 +154,6 @@ export const FlexTabs = styled.div`
   }
 `
 
-export const ProductTabContent = styled.div`
-  border-left: 1px solid /*!setting.border_color{*/ #dddddd /*}*/;
-  border-bottom: 1px solid /*!setting.border_color{*/ #dddddd /*}*/;
-  border-right: 1px solid /*!setting.border_color{*/ #dddddd /*}*/;
-  padding: 25px;
-`
 export const Section = styled.div`
   position: ${props => (props.id === props.activeId ? 'static' : 'absolute')};
   opacity: ${props => (props.id === props.activeId ? '1' : '0')};
@@ -163,13 +161,4 @@ export const Section = styled.div`
   -webkit-transition: opacity 0.15s linear;
   -o-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
-
-  & p {
-    margin: 0;
-    padding: 0;
-  }
-
-  & li {
-    list-style-type: initial;
-  }
 `
