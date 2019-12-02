@@ -17,6 +17,7 @@ export const GlobalStyle = props => (
       body {
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-size: 14px;
+        line-height: 1.5em;
       }
       html {
         -ms-text-size-adjust: 100%;
@@ -182,7 +183,7 @@ export const TwoColumnGrid = styled.div`
   grid-template-rows: 1auto;
   grid-template-areas: 'left . right';
 
-  @media (max-width: ${breakpoints.l}px) {
+  @media (max-width: ${breakpoints.m}px) {
     display: block;
   }
 `
@@ -193,13 +194,17 @@ export const GridLeft = styled.div`
 
 export const GridRight = styled.div`
   grid-area: right;
+
+  @media (max-width: ${breakpoints.m}px) {
+    padding: 15px;
+  }
 `
 
 export const MainContent = styled.main`
   margin-top: 80px;
   margin-bottom: 40px;
 
-  @media (max-width: ${breakpoints.l}px) {
+  @media (max-width: ${breakpoints.m}px) {
     margin-top: 40px;
     margin-bottom: 20px;
   }

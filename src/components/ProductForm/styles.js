@@ -81,3 +81,42 @@ export const AddToCart = styled.div`
     background-color: #bbbbbb !important;
   }
 `
+
+export const ShortDescription = styled.div`
+  display: inline-block;
+  color: #202020;
+  font-size: 14px;
+  line-height: 25px;
+  margin: 0;
+`
+export const SocialShare = styled.div`
+  display: inline-block;
+  float: left;
+  width: 100%;
+
+  & h2 {
+    color: #202020;
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    margin-top: 20px;
+    font-weight: normal;
+  }
+  & ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  & ul li a {
+    border: 1px solid#dddddd;
+    display: inline-block;
+    float: left;
+    font-size: 20px;
+    height: 42px;
+    line-height: 50px;
+    margin-right: 10px;
+    text-align: center;
+    width: 42px;
+    color: #202020;
+  }
+`

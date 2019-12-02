@@ -1,8 +1,7 @@
 import React from 'react'
-import { graphql } from 'gatsby'
-
 import SEO from '~/components/seo'
 import ProductForm from '~/components/ProductForm'
+
 import {
   Img,
   Container,
@@ -20,6 +19,8 @@ import {
   ProductCollateral,
   ProductNavTabs,
   ProductTabContent,
+  Section,
+  FlexTabs,
 } from './styles'
 
 const ProductPage = ({ data }) => {
@@ -64,37 +65,46 @@ const ProductPage = ({ data }) => {
             <ProductForm product={product} />
           </GridRight>
         </TwoColumnGrid>
-        <ProductCollateral>
-          <ProductNavTabs>
-            <li class="active">
-              <a data-toggle="tab" href="#sectionA">
-                Description du produit
-              </a>
-            </li>
-            <li>
-              <a data-toggle="tab" href="#sectionC">
-                Livraisons &amp; Retours
-              </a>
-            </li>
-          </ProductNavTabs>
-          <ProductTabContent>
-            <div id="sectionA" class="tab-pane fade in active">
+      </ProductContainer>
+      <ProductCollateral>
+        <ProductNavTabs>
+          <input
+            class="state"
+            type="radio"
+            title="tabDescription"
+            name="tabs-state"
+            id="tabDescription"
+            checked
+          />
+          <input
+            class="state"
+            type="radio"
+            title="tabDeliver"
+            name="tabs-state"
+            id="tabDeliver"
+          />
+          <FlexTabs className="tabs">
+            <label for="tabDescription" id="tabDescription-label" class="tab">
+              Description du produit
+            </label>
+            <label for="tabDeliver" id="tabDeliver-label" class="tab">
+              Livraisons &amp; Retours
+            </label>
+            <div id="tabDescription-panel" className="panel active">
               <ProductDescription
                 dangerouslySetInnerHTML={{ __html: descriptionHtml }}
               />
             </div>
-            <div id="sectionC" class="tab-pane fade">
-              <div class="box-collateral">
-                Les produits sont expédiés dans un délai de 48 à 72h selon
-                disponibilité. Les envois se font par la Poste Indonésienne qui
-                assure les livraisons entre 10 et 15 jours. Les retours sont
-                acceptés dans un délai de 7 jours, en faire préalablement la
-                demande par mail.
-              </div>
+            <div id="tabDeliver-panel" className="panel">
+              Les produits sont expédiés dans un délai de 48 à 72h selon
+              disponibilité. Les envois se font par la Poste Indonésienne qui
+              assure les livraisons entre 10 et 15 jours. Les retours sont
+              acceptés dans un délai de 7 jours, en faire préalablement la
+              demande par mail.
             </div>
-          </ProductTabContent>
-        </ProductCollateral>
-      </ProductContainer>
+          </FlexTabs>
+        </ProductNavTabs>
+      </ProductCollateral>
     </>
   )
 }

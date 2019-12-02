@@ -2,12 +2,15 @@ import React, { useState, useContext, useEffect, useCallback } from 'react'
 import find from 'lodash/find'
 import isEqual from 'lodash/isEqual'
 import PropTypes from 'prop-types'
+import { FaFacebookF, FaPinterest, FaEnvelope } from 'react-icons/fa'
 import {
   ProductCodes,
   ProductOptions,
   AddToQty,
   AddToCart,
   ProductPrice,
+  ShortDescription,
+  SocialShare,
 } from './styles'
 
 import StoreContext from '~/context/StoreContext'
@@ -18,6 +21,7 @@ const ProductForm = ({ product }) => {
     variants,
     variants: [initialVariant],
     priceRange: { minVariantPrice },
+    description,
   } = product
   const [variant, setVariant] = useState({ ...initialVariant })
   const [quantity, setQuantity] = useState(1)
@@ -25,6 +29,8 @@ const ProductForm = ({ product }) => {
     addVariantToCart,
     store: { client, adding },
   } = useContext(StoreContext)
+
+  const shortDescription = description.substring(0, 235) + `...`
 
   const productVariant =
     client.product.helpers.variantForOptions(product, variant) || variant
@@ -108,29 +114,31 @@ const ProductForm = ({ product }) => {
           Disponibilité : <span>{available ? 'en stock' : 'épuisé'}</span>
         </p>
       </ProductCodes>
-      <ProductOptions>
-        {options.map(({ id, name, values }, index) => (
-          <React.Fragment key={id}>
-            <label htmlFor={name}>{name} </label>
-            <select
-              name={name}
-              key={id}
-              onChange={event => handleOptionChange(index, event)}
-            >
-              {values.map(value => (
-                <option
-                  value={value}
-                  key={`${name}-${value}`}
-                  disabled={checkDisabled(name, value)}
-                >
-                  {value}
-                </option>
-              ))}
-            </select>
-            <br />
-          </React.Fragment>
-        ))}
-      </ProductOptions>
+      {options.length > 1 && (
+        <ProductOptions>
+          {options.map(({ id, name, values }, index) => (
+            <React.Fragment key={id}>
+              <label htmlFor={name}>{name} </label>
+              <select
+                name={name}
+                key={id}
+                onChange={event => handleOptionChange(index, event)}
+              >
+                {values.map(value => (
+                  <option
+                    value={value}
+                    key={`${name}-${value}`}
+                    disabled={checkDisabled(name, value)}
+                  >
+                    {value}
+                  </option>
+                ))}
+              </select>
+              <br />
+            </React.Fragment>
+          ))}
+        </ProductOptions>
+      )}
       <AddToQty>
         <input
           type="number"
@@ -148,9 +156,45 @@ const ProductForm = ({ product }) => {
           disabled={!available || adding}
           onClick={handleAddToCart}
         >
-          Add to Cart
+          Ajouter au panier
         </button>
       </AddToCart>
+      <ShortDescription>{shortDescription}</ShortDescription>
+      <SocialShare>
+        <h2>PARTAGER:</h2>
+        <ul>
+          <li class="facebook">
+            <a
+              href="https://www.facebook.com/kidecoration-853390995037580/"
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="share to facebook"
+            >
+              <FaFacebookF />
+            </a>
+          </li>
+          <li class="mail">
+            <a
+              href="mailto:"
+              title="Envoyer un email à un ami"
+              aria-label="share by email"
+            >
+              <FaEnvelope />
+            </a>
+          </li>
+          <li class="pinterest">
+            <a
+              href="https://pinterest.com/pin/create/button/?url=https://ki-decoration.com/products/collier-balinais-en-raphia-et-coquillages-1&amp;media=//cdn.shopify.com/s/files/1/0030/1796/5603/products/IMG_5368_1024x1024.jpg?v=1575014846&amp;description=Collier balinais en raphia et coquillages"
+              rel="noopener noreferrer"
+              target="_blank"
+              title="Pin sur Pinterest"
+              aria-label="pin on Pinterest"
+            >
+              <FaPinterest />
+            </a>
+          </li>
+        </ul>
+      </SocialShare>
     </>
   )
 }
