@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SEO from '~/components/seo'
 import ProductForm from '~/components/ProductForm'
-
+import { MdExpandMore, MdChevronRight } from 'react-icons/md'
 import {
   Img,
   Container,
@@ -21,10 +21,17 @@ import {
   ProductTabContent,
   Section,
   FlexTabs,
+  Chevrons,
 } from './styles'
 
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
+
+  const [tabActiveId, setTabActiveId] = useState('tabDescription')
+
+  function setTabActive(id) {
+    setTabActiveId(id)
+  }
 
   const {
     title,
@@ -68,34 +75,53 @@ const ProductPage = ({ data }) => {
       </ProductContainer>
       <ProductCollateral>
         <ProductNavTabs>
-          <input
-            class="state"
-            type="radio"
-            title="tabDescription"
-            name="tabs-state"
-            id="tabDescription"
-            checked
-          />
-          <input
-            class="state"
-            type="radio"
-            title="tabDeliver"
-            name="tabs-state"
-            id="tabDeliver"
-          />
           <FlexTabs className="tabs">
-            <label for="tabDescription" id="tabDescription-label" class="tab">
+            <div
+              id="tabDescription-label"
+              className={
+                tabActiveId === 'tabDescription' ? 'tab active' : 'tab'
+              }
+              onClick={() => setTabActive('tabDescription')}
+            >
               Description du produit
-            </label>
-            <label for="tabDeliver" id="tabDeliver-label" class="tab">
+              <Chevrons>
+                {tabActiveId === 'tabDescription' ? (
+                  <MdExpandMore />
+                ) : (
+                  <MdChevronRight />
+                )}
+              </Chevrons>
+            </div>
+            <div
+              id="tabDeliver-label"
+              className={tabActiveId === 'tabDeliver' ? 'tab active' : 'tab'}
+              onClick={() => setTabActive('tabDeliver')}
+            >
               Livraisons &amp; Retours
-            </label>
-            <div id="tabDescription-panel" className="panel active">
+              <Chevrons>
+                {tabActiveId === 'tabDeliver' ? (
+                  <MdExpandMore />
+                ) : (
+                  <MdChevronRight />
+                )}
+              </Chevrons>
+            </div>
+            <div
+              id="tabDescription-panel"
+              className={
+                tabActiveId === 'tabDescription' ? 'panel active' : 'panel'
+              }
+            >
               <ProductDescription
                 dangerouslySetInnerHTML={{ __html: descriptionHtml }}
               />
             </div>
-            <div id="tabDeliver-panel" className="panel">
+            <div
+              id="tabDeliver-panel"
+              className={
+                tabActiveId === 'tabDeliver' ? 'panel active' : 'panel'
+              }
+            >
               Les produits sont expédiés dans un délai de 48 à 72h selon
               disponibilité. Les envois se font par la Poste Indonésienne qui
               assure les livraisons entre 10 et 15 jours. Les retours sont

@@ -71,23 +71,6 @@ export const ProductNavTabs = styled.div`
     position: absolute;
     left: -10000px;
   }
-
-  & #tabDescription:checked ~ .tabs #tabDescription-label,
-  #tabDeliver:checked ~ .tabs #tabDeliver-label {
-    cursor: default;
-    color: #9e6947 !important;
-    border: 1px solid #ddd;
-    border-bottom-color: transparent;
-    margin-bottom: -1px;
-    position: relative;
-    background: white;
-  }
-
-  & #tabDescription:checked ~ .tabs #tabDescription-panel,
-  #tabDeliver:checked ~ .tabs #tabDeliver-panel {
-    display: block;
-    border: 1px solid #ddd;
-  }
 `
 export const FlexTabs = styled.div`
   display: flex;
@@ -95,6 +78,7 @@ export const FlexTabs = styled.div`
   flex-wrap: wrap;
 
   & .tab {
+    position: relative;
     display: inline-block;
     padding: 15px;
     vertical-align: top;
@@ -109,12 +93,29 @@ export const FlexTabs = styled.div`
   }
 
   & .panel {
-    background-color: #fff;
+    background: white;
     padding: 30px;
     min-height: 300px;
     display: none;
     width: 100%;
     flex-basis: auto;
+  }
+
+  & .tab.active {
+    cursor: default;
+    color: #9e6947 !important;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    margin-bottom: -1px;
+    background: white;
+  }
+
+  & .panel.active {
+    display: block;
+    border: 1px solid #ddd;
+    -webkit-transition: opacity 0.15s linear;
+    -o-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
   }
 
   & p {
@@ -153,12 +154,10 @@ export const FlexTabs = styled.div`
     }
   }
 `
+export const Chevrons = styled.div`
+  display: none;
 
-export const Section = styled.div`
-  position: ${props => (props.id === props.activeId ? 'static' : 'absolute')};
-  opacity: ${props => (props.id === props.activeId ? '1' : '0')};
-  visibility: ${props => (props.id === props.activeId ? 'visible' : 'hidden')};
-  -webkit-transition: opacity 0.15s linear;
-  -o-transition: opacity 0.15s linear;
-  transition: opacity 0.15s linear;
+  @media (max-width: ${breakpoints.m}px) {
+    display: inline-block;
+  }
 `

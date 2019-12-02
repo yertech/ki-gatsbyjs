@@ -110,7 +110,7 @@ const ProductForm = ({ product }) => {
     <>
       <ProductPrice>{price}</ProductPrice>
       <ProductCodes>
-        <p class="availability in-stock">
+        <p className="availability in-stock">
           Disponibilité : <span>{available ? 'en stock' : 'épuisé'}</span>
         </p>
       </ProductCodes>
@@ -163,7 +163,7 @@ const ProductForm = ({ product }) => {
       <SocialShare>
         <h2>PARTAGER:</h2>
         <ul>
-          <li class="facebook">
+          <li className="facebook">
             <a
               href="https://www.facebook.com/kidecoration-853390995037580/"
               rel="noopener noreferrer"
@@ -173,7 +173,7 @@ const ProductForm = ({ product }) => {
               <FaFacebookF />
             </a>
           </li>
-          <li class="mail">
+          <li className="mail">
             <a
               href="mailto:"
               title="Envoyer un email à un ami"
@@ -182,7 +182,7 @@ const ProductForm = ({ product }) => {
               <FaEnvelope />
             </a>
           </li>
-          <li class="pinterest">
+          <li className="pinterest">
             <a
               href="https://pinterest.com/pin/create/button/?url=https://ki-decoration.com/products/collier-balinais-en-raphia-et-coquillages-1&amp;media=//cdn.shopify.com/s/files/1/0030/1796/5603/products/IMG_5368_1024x1024.jpg?v=1575014846&amp;description=Collier balinais en raphia et coquillages"
               rel="noopener noreferrer"
