@@ -11,6 +11,8 @@ import {
   ProductPrice,
   ShortDescription,
   SocialShare,
+  IncQty,
+  DescQty,
 } from './styles'
 
 import StoreContext from '~/context/StoreContext'
@@ -77,6 +79,13 @@ const ProductForm = ({ product }) => {
     addVariantToCart(productVariant.shopifyId, quantity)
   }
 
+  const increaseQty = () => {
+    setQuantity(quantity + 1)
+  }
+
+  const decreaseQty = () => {
+    if (quantity > 1) setQuantity(quantity - 1)
+  }
   /* 
   Using this in conjunction with a select input for variants 
   can cause a bug where the buy button is disabled, this 
@@ -140,23 +149,25 @@ const ProductForm = ({ product }) => {
         </ProductOptions>
       )}
       <AddToQty>
+        <IncQty onClick={increaseQty}>
+          <span>+</span>
+        </IncQty>
         <input
-          type="number"
+          type="text"
           id="quantity"
           name="quantity"
           min="1"
-          step="1"
           onChange={handleQuantityChange}
           value={quantity}
+          title="Quantite"
         />
+        <DescQty onClick={decreaseQty}>
+          <span>-</span>
+        </DescQty>
       </AddToQty>
       <AddToCart>
-        <button
-          type="submit"
-          disabled={!available || adding}
-          onClick={handleAddToCart}
-        >
-          Ajouter au panier
+        <button type="submit" disabled={!available} onClick={handleAddToCart}>
+          {!available ? 'Epuisé' : 'Ajouter au panier'}
         </button>
       </AddToCart>
       <ShortDescription>{shortDescription}</ShortDescription>

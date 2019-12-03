@@ -18,7 +18,7 @@ export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70vw;
+  width: 60vw;
 `
 
 export const ProductTitle = styled.h1`
@@ -70,7 +70,7 @@ export const ImgTwoColumnGrid = styled.div`
 export const ProductCollateral = styled.div`
     margin-top: 30px;
     margin-bottom: 40px;
-    width: 80vw;   
+    width: 70vw;   
 
     @media (max-width:${breakpoints.m}px) {
       width: 90vw; 

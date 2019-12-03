@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
   MdExpandMore,
   MdExpandLess,
@@ -8,10 +8,20 @@ import {
 import logo from '../../images/logo.png'
 import './styles.css'
 import { Link } from 'gatsby'
+import StoreContext from '~/context/StoreContext'
 
 const Navigation = () => {
   const [isMobile, setIsMobile] = useState(false)
   const [isShopMenuOpen, setIsShopMenuOpen] = useState(false)
+
+  const {
+    store: { checkout },
+  } = useContext(StoreContext)
+
+  const totalQuantity = checkout.lineItems.reduce(
+    (totalQty, line_item) => totalQty + line_item.quantity,
+    0
+  )
 
   function toggle() {
     setIsMobile(!isMobile)
@@ -96,8 +106,13 @@ const Navigation = () => {
               </Link>
             </li>
             <li className="navbar-link">
-              <Link to={'/cart'} aria-label="Cart page link">
+              <Link
+                to={'/cart'}
+                aria-label="Cart page link"
+                className="cart-contents"
+              >
                 <MdShoppingCart />
+                <span className="cart-count">{totalQuantity}</span>
               </Link>
             </li>
           </ul>

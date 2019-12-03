@@ -22,7 +22,7 @@
 .navbar-links li ul {
   visibility: hidden;
   top: 62px;
-  background-color: #9E6947;
+  background-color: #9e6947;
   color: white;
   position: absolute;
   padding: 15px 0;
@@ -63,7 +63,36 @@ li.navbar-sublink {
 }
 
 .navbar-link a:hover {
-  color: #9E6947;
+  color: #9e6947;
+}
+.cart-contents {
+  position: relative;
+  float: right;
+  font-size: 16px;
+  line-height: 41px;
+  color: #202020;
+  margin-right: 16px;
+  -webkit-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cart-count {
+  background-color: #d8b7a2;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #fff;
+  display: block;
+  font-size: 10px;
+  height: 17px;
+  left: auto;
+  line-height: 17px;
+  position: absolute;
+  right: -15px;
+  text-align: center;
+  top: -12px;
+  width: 17px;
+  z-index: 999;
 }
 
 .toggle {
@@ -92,7 +121,7 @@ li.navbar-sublink {
     * Smaller screen + Mobile
     *
     */
-@media only screen  and (max-width: 1023px) {
+@media only screen and (max-width: 1023px) {
   .Navbar {
     flex-direction: column; /* change the direction of the container */
     height: auto; /* overrides the height for large screens */
@@ -108,6 +137,7 @@ li.navbar-sublink {
     padding: 5px;
     justify-content: left;
   }
+
   .navbar-links {
     flex-direction: column;
   }

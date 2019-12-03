@@ -20,7 +20,7 @@ export const ProductCodes = styled.div`
     line-height: 40px;
   }
   & > p > span {
-    color: #d8b7a2;
+    color: #9e6947;
   }
 `
 export const ProductOptions = styled.div`
@@ -73,12 +73,19 @@ export const AddToCart = styled.div`
     line-height: 45px;
     padding: 0 22px;
     text-transform: uppercase;
-    background-color: #d8b7a2;
+    background-color: #9e6947;
     color: #ffffff;
+    cursor: pointer;
   }
 
-  & > button.disabled {
+  & > button.disabled,
+  button:disabled {
     background-color: #bbbbbb !important;
+    cursor: initial;
+  }
+
+  & > button:hover {
+    background-color: #000 !important;
   }
 `
 
@@ -119,4 +126,33 @@ export const SocialShare = styled.div`
     width: 42px;
     color: #202020;
   }
+`
+export const BtnQty = styled.div`
+  cursor: pointer;
+  float: left;
+  font-size: 16px;
+  height: 22.5px;
+  line-height: 14px;
+  padding: 4px 0;
+  -webkit-transition: all 0.15s linear 0s;
+  -moz-transition: all 0.15s linear 0s;
+  transition: all 0.15s linear 0s;
+  width: 20px;
+  overflow: hidden;
+  text-indent: -999px;
+`
+
+export const IncQty = styled(BtnQty)`
+  background: url(//cdn.shopify.com/s/files/1/0030/1796/5603/t/7/assets/quantity-minus.png?3008)
+    no-repeat 100% 0 #bbb;
+  position: absolute;
+  right: 0;
+  top: 0;
+`
+export const DescQty = styled(BtnQty)`
+  background: url(//cdn.shopify.com/s/files/1/0030/1796/5603/t/7/assets/quantity-plus.png?3008)
+    no-repeat 100% 100% #bbb;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 `
