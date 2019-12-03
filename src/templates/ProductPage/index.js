@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import SEO from '~/components/seo'
 import ProductForm from '~/components/ProductForm'
 import { MdExpandMore, MdChevronRight } from 'react-icons/md'
+import Footer from '~/components/Footer'
+import { graphql } from 'gatsby'
+
 import {
   Img,
   Container,
@@ -22,17 +25,11 @@ import {
   Section,
   FlexTabs,
   Chevrons,
+  ImgThumb,
 } from './styles'
 
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
-
-  const [tabActiveId, setTabActiveId] = useState('tabDescription')
-
-  function setTabActive(id) {
-    setTabActiveId(id)
-  }
-
   const {
     title,
     description,
@@ -41,6 +38,17 @@ const ProductPage = ({ data }) => {
     images: [firstImage],
     variants: [firstVariant],
   } = data.shopifyProduct
+
+  const [activeTabId, setActiveTabId] = useState('tabDescription')
+  const [activeImg, setActiveImg] = useState(firstImage)
+
+  function setTabActive(id) {
+    setActiveTabId(id)
+  }
+
+  function setActiveImage(img) {
+    setActiveImg(img)
+  }
 
   return (
     <>
@@ -51,17 +59,19 @@ const ProductPage = ({ data }) => {
             <ImgTwoColumnGrid>
               <ProductGridLeft>
                 {images.map(image => (
-                  <Img
+                  <ImgThumb
                     fluid={image.localFile.childImageSharp.fluid}
                     key={image.id}
                     alt={title}
+                    onClick={() => setActiveImage(image)}
+                    className={image.id === activeImg.id ? 'active' : ''}
                   />
                 ))}
               </ProductGridLeft>
               <ProductGridRight>
                 <Img
-                  fluid={firstImage.localFile.childImageSharp.fluid}
-                  key={firstImage.id}
+                  fluid={activeImg.localFile.childImageSharp.fluid}
+                  key={activeImg.id}
                   alt={title}
                 />
               </ProductGridRight>
@@ -79,13 +89,13 @@ const ProductPage = ({ data }) => {
             <div
               id="tabDescription-label"
               className={
-                tabActiveId === 'tabDescription' ? 'tab active' : 'tab'
+                activeTabId === 'tabDescription' ? 'tab active' : 'tab'
               }
               onClick={() => setTabActive('tabDescription')}
             >
               Description du produit
               <Chevrons>
-                {tabActiveId === 'tabDescription' ? (
+                {activeTabId === 'tabDescription' ? (
                   <MdExpandMore />
                 ) : (
                   <MdChevronRight />
@@ -94,12 +104,12 @@ const ProductPage = ({ data }) => {
             </div>
             <div
               id="tabDeliver-label"
-              className={tabActiveId === 'tabDeliver' ? 'tab active' : 'tab'}
+              className={activeTabId === 'tabDeliver' ? 'tab active' : 'tab'}
               onClick={() => setTabActive('tabDeliver')}
             >
               Livraisons &amp; Retours
               <Chevrons>
-                {tabActiveId === 'tabDeliver' ? (
+                {activeTabId === 'tabDeliver' ? (
                   <MdExpandMore />
                 ) : (
                   <MdChevronRight />
@@ -109,7 +119,7 @@ const ProductPage = ({ data }) => {
             <div
               id="tabDescription-panel"
               className={
-                tabActiveId === 'tabDescription' ? 'panel active' : 'panel'
+                activeTabId === 'tabDescription' ? 'panel active' : 'panel'
               }
             >
               <ProductDescription
@@ -119,7 +129,7 @@ const ProductPage = ({ data }) => {
             <div
               id="tabDeliver-panel"
               className={
-                tabActiveId === 'tabDeliver' ? 'panel active' : 'panel'
+                activeTabId === 'tabDeliver' ? 'panel active' : 'panel'
               }
             >
               Les produits sont expédiés dans un délai de 48 à 72h selon
@@ -131,6 +141,7 @@ const ProductPage = ({ data }) => {
           </FlexTabs>
         </ProductNavTabs>
       </ProductCollateral>
+      <Footer />
     </>
   )
 }

@@ -1,5 +1,18 @@
 import styled from '@emotion/styled'
-import { breakpoints } from '~/utils/styles'
+import { breakpoints, Img } from '~/utils/styles'
+
+export const ImgThumb = styled(Img)`
+  cursor: pointer;
+  opacity: 0.7;
+
+  &.active {
+    opacity: 1;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+`
 
 export const ProductContainer = styled.div`
   display: flex;
@@ -14,7 +27,7 @@ export const ProductTitle = styled.h1`
   word-wrap: break-word;
   letter-spacing: 5px;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-  font-weight: 400;
+  font-weight: 50;
   margin: 0;
   line-height: 24px;
   text-transform: uppercase;
@@ -24,30 +37,33 @@ export const ProductDescription = styled.div`
   font-weight: 300;
 `
 export const ProductGridLeft = styled.div`
+  padding: 10px 0;
   grid-area: left;
   width: 5vw;
+  max-width: 65px;
 
   @media (max-width: ${breakpoints.m}px) {
-    width: 20vw;
+    width: 10vw;
   }
 `
 
 export const ProductGridRight = styled.div`
   grid-area: right;
-  width: 30vw;
+  width: 40vw;
+  max-width: 500px;
 
   @media (max-width: ${breakpoints.m}px) {
-    width: 75vw;
+    width: 80vw;
   }
 `
 export const ImgTwoColumnGrid = styled.div`
   display: grid;
-  grid-template-columns: 5vw 1rem 30vw;
+  grid-template-columns: auto 1rem auto;
   grid-template-rows: 1auto;
   grid-template-areas: 'left . right';
 
   @media (max-width: ${breakpoints.m}px) {
-    grid-template-columns: 20vw 2vw 75vw;
+    grid-template-columns: auto 2vw auto;
   }
 `
 
