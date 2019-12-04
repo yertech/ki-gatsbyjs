@@ -65,7 +65,7 @@ export const AddToCart = styled.div`
   display: inline-block;
   float: left;
   margin: 25px 10px 25px 0;
-
+  width: 205px;
   & > button {
     float: left;
     font-size: 12px;
