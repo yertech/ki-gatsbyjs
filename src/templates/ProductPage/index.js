@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import SEO from '~/components/seo'
 import ProductForm from '~/components/ProductForm'
-import { MdExpandMore, MdChevronRight } from 'react-icons/md'
+import { MdExpandMore, MdChevronRight, MdTouchApp } from 'react-icons/md'
 import Footer from '~/components/Footer'
 import { graphql } from 'gatsby'
+import GImage from '../../components/GImage'
 
 import {
   Img,
@@ -29,6 +30,9 @@ import {
 } from './styles'
 
 const ProductPage = ({ data }) => {
+  const tabDescRef = React.createRef()
+  const tabDeliverRef = React.createRef()
+
   const product = data.shopifyProduct
   const {
     title,
@@ -43,6 +47,9 @@ const ProductPage = ({ data }) => {
   const [activeImg, setActiveImg] = useState(firstImage)
 
   function setTabActive(id) {
+    id === 'tabDescription'
+      ? tabDescRef.current.focus()
+      : tabDeliverRef.current.focus()
     setActiveTabId(id)
   }
 
@@ -58,19 +65,34 @@ const ProductPage = ({ data }) => {
           <GridLeft>
             <ImgTwoColumnGrid>
               <ProductGridLeft>
-                {images.map(image => (
-                  <ImgThumb
-                    fluid={image.localFile.childImageSharp.fluid}
-                    key={image.id}
-                    alt={title}
-                    onClick={() => setActiveImage(image)}
-                    className={image.id === activeImg.id ? 'active' : ''}
-                  />
-                ))}
+                {images.map(image => {
+                  const {
+                    id,
+                    localFile: {
+                      childImageSharp: { thumbImg, thumbImgBase64 },
+                    },
+                  } = image
+                  return (
+                    <ImgThumb
+                      src={thumbImg.src}
+                      base64={thumbImgBase64.base64}
+                      sizes={`(max-width: 65px) 65px`}
+                      key={id}
+                      alt={title}
+                      image={image}
+                      className={id === activeImg.id ? 'active' : ''}
+                      clickHandler={setActiveImage}
+                    />
+                  )
+                })}
               </ProductGridLeft>
               <ProductGridRight>
-                <Img
-                  fluid={activeImg.localFile.childImageSharp.fluid}
+                <GImage
+                  src={activeImg.localFile.childImageSharp.bigImg.src}
+                  base64={
+                    activeImg.localFile.childImageSharp.bigImgBase64.base64
+                  }
+                  sizes={`(max-width: 500px) 500px`}
                   key={activeImg.id}
                   alt={title}
                 />
@@ -92,6 +114,7 @@ const ProductPage = ({ data }) => {
                 activeTabId === 'tabDescription' ? 'tab active' : 'tab'
               }
               onClick={() => setTabActive('tabDescription')}
+              ref={tabDescRef}
             >
               Description du produit
               <Chevrons>
@@ -106,6 +129,7 @@ const ProductPage = ({ data }) => {
               id="tabDeliver-label"
               className={activeTabId === 'tabDeliver' ? 'tab active' : 'tab'}
               onClick={() => setTabActive('tabDeliver')}
+              ref={tabDeliverRef}
             >
               Livraisons &amp; Retours
               <Chevrons>
@@ -189,6 +213,23 @@ export const query = graphql`
           childImageSharp {
             fluid(maxWidth: 910) {
               ...GatsbyImageSharpFluid_withWebp
+            }
+            bigImg: resize(
+              width: 500
+              height: 667
+              jpegProgressive: true
+              quality: 100
+            ) {
+              src
+            }
+            bigImgBase64: fluid(maxWidth: 500) {
+              base64
+            }
+            thumbImg: resize(width: 65, height: 87, jpegProgressive: true) {
+              src
+            }
+            thumbImgBase64: fluid(maxWidth: 65) {
+              base64
             }
           }
         }

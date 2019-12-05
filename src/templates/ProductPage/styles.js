@@ -1,10 +1,11 @@
 import styled from '@emotion/styled'
 import { breakpoints, Img } from '~/utils/styles'
+import GImage from '../../components/GImage'
 
-export const ImgThumb = styled(Img)`
+export const ImgThumb = styled(GImage)`
   cursor: pointer;
-  opacity: 0.7;
-
+  opacity: 0.6;
+  margin-bottom: 0.35rem;
   &.active {
     opacity: 1;
   }
@@ -31,6 +32,11 @@ export const ProductTitle = styled.h1`
   margin: 0;
   line-height: 24px;
   text-transform: uppercase;
+
+  @media (max-width: 402px) {
+    font-size: 21px;
+    line-height: 21px;
+  }
 `
 
 export const ProductDescription = styled.div`

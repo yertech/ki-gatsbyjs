@@ -69,15 +69,15 @@ const Selection = () => {
       <div className="flex-item-center">
         <ul className="slider-tab flex-item">
           {allShopifyCollection.edges ? (
-            allShopifyCollection.edges.map(
-              ({ node: { id, handle, title } }, index) => (
+            allShopifyCollection.edges
+              .slice(0, 12)
+              .map(({ node: { id, handle, title } }, index) => (
                 <li key={handle} className={getTabClass(index, handle)}>
                   <button onClick={() => setActiveTabId(handle)} type="button">
                     {title}
                   </button>
                 </li>
-              )
-            )
+              ))
           ) : (
             <p>No Selections found</p>
           )}
